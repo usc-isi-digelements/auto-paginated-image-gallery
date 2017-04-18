@@ -1,0 +1,207 @@
+<!--
+Copyright 2017 Next Century Corporation
+
+Licensed under the Apache License, Version 2.0 (the "License");
+you may not use this file except in compliance with the License.
+You may obtain a copy of the License at
+
+    http://www.apache.org/licenses/LICENSE-2.0
+
+Unless required by applicable law or agreed to in writing, software
+distributed under the License is distributed on an "AS IS" BASIS,
+WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+See the License for the specific language governing permissions and
+limitations under the License.
+-->
+
+<link rel="import" href="../polymer/polymer.html">
+<link rel="import" href="../paginated-image-gallery/paginated-image-gallery.html">
+
+<!--
+A Polymer Element showing a paginated-image-gallery element that automatically handles pagination.
+
+### Example
+```html
+<auto-paginated-image-gallery
+  images="[[images]]">
+</auto-paginated-image-gallery>
+```
+
+@demo demo/index.html
+-->
+
+<dom-module id="auto-paginated-image-gallery">
+  <template>
+    <style>
+      :host {
+        display: block;
+      }
+    </style>
+
+    <paginated-image-gallery
+      image-items="[[_imageItems]]"
+      total-items="[[images.length]]"
+      blur="[[blur]]"
+      image-link-property="[[imageLinkProperty]]"
+      image-source-property="[[imageSourceProperty]]"
+      load-type="[[loadType]]"
+      new-tab="[[newTab]]"
+      page-size="[[pageSize]]"
+      page="{{_page}}">
+    </paginated-image-gallery>
+  </template>
+
+  <script>
+  (function() {
+    'use strict';
+
+    Polymer({
+      is: 'auto-paginated-image-gallery',
+
+      properties: {
+        /**
+         * (Required)
+         *
+         * The list of all images available across all pages in the gallery.
+         *
+         * @type {Array}
+         */
+        images: {
+          type: Array
+        },
+
+        /**
+         * (Optional)
+         *
+         * Whether to blur the images.
+         *
+         * @type {Boolean}
+         * @default false
+         */
+        blur: {
+          type: Boolean,
+          value: false
+        },
+
+        /**
+         * (Optional)
+         *
+         * The property of the image objects for their link URL to open information within the application.
+         *
+         * @type {String}
+         * @default 'link'
+         */
+        imageLinkProperty: {
+          type: String,
+          value: 'link'
+        },
+
+        /**
+         * (Optional)
+         *
+         * The property of the image objects for their source URL.
+         *
+         * @type {String}
+         * @default 'source'
+         */
+        imageSourceProperty: {
+          type: String,
+          value: 'source'
+        },
+
+        /**
+         * (Optional)
+         *
+         * The type of items shown in the Loading and Show More text.
+         *
+         * @type {String}
+         * @default ''
+         */
+        loadType: {
+          type: String,
+          value: ''
+        },
+
+        /**
+         * (Optional)
+         *
+         * Whether to open a link in a new tab.
+         *
+         * @type {Boolean}
+         * @default false
+         */
+        newTab: {
+          type: Boolean,
+          value: false
+        },
+
+        /**
+         * (Optional)
+         *
+         * The page size.
+         *
+         * @type {Number}
+         * @default 25
+         */
+        pageSize: {
+          type: Number,
+          value: 25
+        },
+
+        /**
+         * The images to show on the current page in the image gallery.
+         *
+         * @type {Array}
+         * @default []
+         * @private
+         */
+        _imageItems: {
+          type: Array,
+          value: function() {
+            return [];
+          }
+        },
+
+        /**
+         * The current page.
+         *
+         * @type {Number}
+         * @default 1
+         * @private
+         */
+        _page: {
+          type: Number,
+          value: 1
+        }
+      },
+
+      observers: [
+        '_updateImageList(_page, pageSize)',
+        '_updateImagePage(images)'
+      ],
+
+      /**
+       * Updates the images to show on the current page based on the page and page size.
+       *
+       * @param {Number} pageSize
+       * @param {Number} page
+       * @private
+       */
+      _updateImageList: function(page, pageSize) {
+        var startIndex = pageSize * (page - 1);
+        this.set('_imageItems', (this.images || []).slice(startIndex, startIndex + pageSize));
+      },
+
+      /**
+       * Updates the page to show a new set of images.
+       *
+       * @private
+       */
+      _updateImagePage: function() {
+        this.set('_page', 1);
+        this._updateImageList(this._page, this.pageSize);
+      }
+    });
+  })();
+  </script>
+</dom-module>
