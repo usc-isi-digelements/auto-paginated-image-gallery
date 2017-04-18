@@ -37,18 +37,23 @@ limitations under the License.
       setup(function() {
         element = fixture('auto-paginated-image-gallery-fixture');
         element.images = [{
+          id: 'id1',
           link: 'link1',
           source: 'source1'
         }, {
+          id: 'id2',
           link: 'link2',
           source: 'source2'
         }, {
+          id: 'id3',
           link: 'link3',
           source: 'source3'
         }, {
+          id: 'id4',
           link: 'link4',
           source: 'source4'
         }, {
+          id: 'id5',
           link: 'link5',
           source: 'source5'
         }];
@@ -56,18 +61,23 @@ limitations under the License.
 
       test('input properties are set correctly', function() {
         expect(element.images).to.deep.equal([{
+          id: 'id1',
           link: 'link1',
           source: 'source1'
         }, {
+          id: 'id2',
           link: 'link2',
           source: 'source2'
         }, {
+          id: 'id3',
           link: 'link3',
           source: 'source3'
         }, {
+          id: 'id4',
           link: 'link4',
           source: 'source4'
         }, {
+          id: 'id5',
           link: 'link5',
           source: 'source5'
         }]);
@@ -75,26 +85,34 @@ limitations under the License.
 
       test('default properties are set correctly', function() {
         expect(element.blur).to.be.false;
+        expect(element.hovering).to.deep.equal([]);
+        expect(element.imageIdProperty).to.equal('id');
         expect(element.imageLinkProperty).to.equal('link');
         expect(element.imageSourceProperty).to.equal('source');
         expect(element.newTab).to.be.false;
         expect(element.pageSize).to.equal(25);
+        expect(element.selected).to.deep.equal([]);
       });
 
       test('image gallery data is set correctly', function() {
         expect(element._imageItems).to.deep.equal([{
+          id: 'id1',
           link: 'link1',
           source: 'source1'
         }, {
+          id: 'id2',
           link: 'link2',
           source: 'source2'
         }, {
+          id: 'id3',
           link: 'link3',
           source: 'source3'
         }, {
+          id: 'id4',
           link: 'link4',
           source: 'source4'
         }, {
+          id: 'id5',
           link: 'link5',
           source: 'source5'
         }]);
@@ -105,25 +123,33 @@ limitations under the License.
         var imageGallery = element.$$('paginated-image-gallery');
         expect(imageGallery).to.exist;
         expect(imageGallery.blur).to.be.false;
+        expect(imageGallery.hovering).to.deep.equal([]);
+        expect(imageGallery.imageIdProperty).to.equal('id');
         expect(imageGallery.imageLinkProperty).to.equal('link');
         expect(imageGallery.imageSourceProperty).to.equal('source');
         expect(imageGallery.newTab).to.be.false;
         expect(imageGallery.pageSize).to.equal(25);
         expect(imageGallery.page).to.equal(1);
+        expect(imageGallery.selected).to.deep.equal([]);
         expect(imageGallery.totalItems).to.equal(5);
         expect(imageGallery.imageItems).to.deep.equal([{
+          id: 'id1',
           link: 'link1',
           source: 'source1'
         }, {
+          id: 'id2',
           link: 'link2',
           source: 'source2'
         }, {
+          id: 'id3',
           link: 'link3',
           source: 'source3'
         }, {
+          id: 'id4',
           link: 'link4',
           source: 'source4'
         }, {
+          id: 'id5',
           link: 'link5',
           source: 'source5'
         }]);
@@ -132,18 +158,23 @@ limitations under the License.
       test('changing input properties does change properties of the paginated-image-gallery element', function() {
         element.images = [];
         element.blur = true;
+        element.imageIdProperty = 'myId';
         element.imageLinkProperty = 'myLink';
         element.imageSourceProperty = 'mySource';
         element.newTab = true;
         element.pageSize = 10;
+        element.selected = ['id1'];
 
         var imageGallery = element.$$('paginated-image-gallery');
         expect(imageGallery).to.exist;
         expect(imageGallery.blur).to.be.true;
+        expect(imageGallery.hovering).to.deep.equal([]);
+        expect(imageGallery.imageIdProperty).to.equal('myId');
         expect(imageGallery.imageLinkProperty).to.equal('myLink');
         expect(imageGallery.imageSourceProperty).to.equal('mySource');
         expect(imageGallery.newTab).to.be.true;
         expect(imageGallery.pageSize).to.equal(10);
+        expect(imageGallery.selected).to.deep.equal(['id1']);
         expect(imageGallery.totalItems).to.equal(0);
         expect(imageGallery.imageItems).to.deep.equal([]);
       });
@@ -152,6 +183,7 @@ limitations under the License.
         element._page = 2;
 
         element.images = [{
+          id: 'id6',
           link: 'link6',
           source: 'source6'
         }];
@@ -161,11 +193,13 @@ limitations under the License.
 
       test('image gallery data does update if images is changed', function() {
         element.images = [{
+          id: 'id6',
           link: 'link6',
           source: 'source6'
         }];
 
         expect(element._imageItems).to.deep.equal([{
+          id: 'id6',
           link: 'link6',
           source: 'source6'
         }]);
@@ -176,9 +210,11 @@ limitations under the License.
         element.pageSize = 2;
 
         expect(element._imageItems).to.deep.equal([{
+          id: 'id1',
           link: 'link1',
           source: 'source1'
         }, {
+          id: 'id2',
           link: 'link2',
           source: 'source2'
         }]);
@@ -190,9 +226,11 @@ limitations under the License.
         element._page = 2;
 
         expect(element._imageItems).to.deep.equal([{
+          id: 'id3',
           link: 'link3',
           source: 'source3'
         }, {
+          id: 'id4',
           link: 'link4',
           source: 'source4'
         }]);
@@ -204,6 +242,7 @@ limitations under the License.
         element._page = 3;
 
         expect(element._imageItems).to.deep.equal([{
+          id: 'id5',
           link: 'link5',
           source: 'source5'
         }]);

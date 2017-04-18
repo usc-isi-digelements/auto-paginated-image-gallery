@@ -13,9 +13,11 @@ A Polymer Element showing a paginated-image-gallery element that automatically h
 
 `<auto-paginated-image-gallery>` provides the following custom properties and mixins for styling:
 
-Custom property                             | Description                   | Default
---------------------------------------------|-------------------------------|--------
-`--auto-paginated-image-gallery-max-height` | Maximum height of the gallery | 160px
+Custom property                                 | Description                                  | Default
+------------------------------------------------|----------------------------------------------|--------
+`--auto-paginated-image-gallery-hovering-color` | The background color of the hovering images. | none
+`--auto-paginated-image-gallery-max-height`     | Maximum height of the gallery                | 160px
+`--auto-paginated-image-gallery-selected-color` | The background color of the selected images. | none
 
 ### Dependencies
 

@@ -31,9 +31,11 @@ A Polymer Element showing a paginated-image-gallery element that automatically h
 
 `<auto-paginated-image-gallery>` provides the following custom properties and mixins for styling:
 
-Custom property                             | Description                   | Default
---------------------------------------------|-------------------------------|--------
-`--auto-paginated-image-gallery-max-height` | Maximum height of the gallery | 160px
+Custom property                                 | Description                                  | Default
+------------------------------------------------|----------------------------------------------|--------
+`--auto-paginated-image-gallery-hovering-color` | The background color of the hovering images. | none
+`--auto-paginated-image-gallery-max-height`     | Maximum height of the gallery                | 160px
+`--auto-paginated-image-gallery-selected-color` | The background color of the selected images. | none
 
 @demo demo/index.html
 -->
@@ -48,6 +50,8 @@ Custom property                             | Description                   | De
       paginated-image-gallery {
         /* By default, the height of 1 row of images. */
         --paginated-image-gallery-max-height: var(--auto-paginated-image-gallery-max-height, 160px);
+        --paginated-image-gallery-hovering-color: var(--auto-paginated-image-gallery-hovering-color);
+        --paginated-image-gallery-selected-color: var(--auto-paginated-image-gallery-selected-color);
       }
     </style>
 
@@ -55,11 +59,14 @@ Custom property                             | Description                   | De
       image-items="[[_imageItems]]"
       total-items="[[images.length]]"
       blur="[[blur]]"
+      image-id-property="[[imageIdProperty]]"
       image-link-property="[[imageLinkProperty]]"
       image-source-property="[[imageSourceProperty]]"
       new-tab="[[newTab]]"
       page-size="[[pageSize]]"
-      page="{{_page}}">
+      selected="[[selected]]"
+      page="{{_page}}"
+      hovering="{{hovering}}">
     </paginated-image-gallery>
   </template>
 
@@ -93,6 +100,19 @@ Custom property                             | Description                   | De
         blur: {
           type: Boolean,
           value: false
+        },
+
+        /**
+         * (Optional)
+         *
+         * The property of the image objects for their unique IDs.
+         *
+         * @type {String}
+         * @default 'id'
+         */
+        imageIdProperty: {
+          type: String,
+          value: 'id'
         },
 
         /**
@@ -145,6 +165,37 @@ Custom property                             | Description                   | De
         pageSize: {
           type: Number,
           value: 25
+        },
+
+        /**
+         * (Optional)
+         *
+         * The list of selected image IDs.
+         *
+         * @type {Array}
+         * @default []
+         */
+        selected: {
+          type: Array,
+          value: function() {
+            return [];
+          }
+        },
+
+        /**
+         * (Output)
+         *
+         * The list of image IDs targeted by a hover event.
+         *
+         * @type {Array}
+         * @default []
+         */
+        hovering: {
+          notify: true,
+          type: Array,
+          value: function() {
+            return [];
+          }
         },
 
         /**
