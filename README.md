@@ -1,25 +1,13 @@
-# paginated-image-gallery
+# auto-paginated-image-gallery
 
-A Polymer Element showing an image-gallery element in a paginated-list element.
+A Polymer Element showing a paginated-image-gallery element that automatically handles pagination.
 
 ### Example
 ```html
-<paginated-image-gallery
-  image-items="[[list]]"
-  total-items="[[size]]"
-  loading="[[loading]]"
-  page="{{page}}">
-</paginated-image-gallery>
+<auto-paginated-image-gallery
+  images="[[images]]">
+</auto-paginated-image-gallery>
 ```
-
-### Styling
-
-`<paginated-image-gallery>` provides the following custom properties and mixins for styling:
-
-Custom property                        | Description                    | Default
----------------------------------------|--------------------------------|--------
-`--paginated-image-gallery-max-height` | The max height of the gallery. | 800px
-
 
 ### Dependencies
 
