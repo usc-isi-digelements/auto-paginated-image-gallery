@@ -9,6 +9,14 @@ A Polymer Element showing a paginated-image-gallery element that automatically h
 </auto-paginated-image-gallery>
 ```
 
+### Styling
+
+`<auto-paginated-image-gallery>` provides the following custom properties and mixins for styling:
+
+Custom property                             | Description                   | Default
+--------------------------------------------|-------------------------------|--------
+`--auto-paginated-image-gallery-max-height` | Maximum height of the gallery | 160px
+
 ### Dependencies
 
 Dependencies are installed using [Bower](http://bower.io/):

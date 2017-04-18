@@ -27,6 +27,14 @@ A Polymer Element showing a paginated-image-gallery element that automatically h
 </auto-paginated-image-gallery>
 ```
 
+### Styling
+
+`<auto-paginated-image-gallery>` provides the following custom properties and mixins for styling:
+
+Custom property                             | Description                   | Default
+--------------------------------------------|-------------------------------|--------
+`--auto-paginated-image-gallery-max-height` | Maximum height of the gallery | 160px
+
 @demo demo/index.html
 -->
 
@@ -35,6 +43,11 @@ A Polymer Element showing a paginated-image-gallery element that automatically h
     <style>
       :host {
         display: block;
+      }
+
+      paginated-image-gallery {
+        /* By default, the height of 1 row of images. */
+        --paginated-image-gallery-max-height: var(--auto-paginated-image-gallery-max-height, 160px);
       }
     </style>
 
