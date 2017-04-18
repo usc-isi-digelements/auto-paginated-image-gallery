@@ -57,7 +57,6 @@ Custom property                             | Description                   | De
       blur="[[blur]]"
       image-link-property="[[imageLinkProperty]]"
       image-source-property="[[imageSourceProperty]]"
-      load-type="[[loadType]]"
       new-tab="[[newTab]]"
       page-size="[[pageSize]]"
       page="{{_page}}">
@@ -125,19 +124,6 @@ Custom property                             | Description                   | De
         /**
          * (Optional)
          *
-         * The type of items shown in the Loading and Show More text.
-         *
-         * @type {String}
-         * @default ''
-         */
-        loadType: {
-          type: String,
-          value: ''
-        },
-
-        /**
-         * (Optional)
-         *
          * Whether to open a link in a new tab.
          *
          * @type {Boolean}
@@ -159,6 +145,20 @@ Custom property                             | Description                   | De
         pageSize: {
           type: Number,
           value: 25
+        },
+
+        /**
+         * (Output)
+         *
+         * The number of images shown on the current page and all previous pages.
+         *
+         * @type {Number}
+         * @default 0
+         */
+        shownCount: {
+          notify: true,
+          type: Number,
+          value: 0
         },
 
         /**
@@ -189,8 +189,8 @@ Custom property                             | Description                   | De
       },
 
       observers: [
-        '_updateImageList(_page, pageSize)',
-        '_updateImagePage(images)'
+        '_updateImageItems(_page, pageSize)',
+        '_updatePage(images)'
       ],
 
       /**
@@ -200,9 +200,11 @@ Custom property                             | Description                   | De
        * @param {Number} page
        * @private
        */
-      _updateImageList: function(page, pageSize) {
+      _updateImageItems: function(page, pageSize) {
         var startIndex = pageSize * (page - 1);
-        this.set('_imageItems', (this.images || []).slice(startIndex, startIndex + pageSize));
+        var images = this.images || [];
+        this.set('_imageItems', images.slice(startIndex, startIndex + pageSize));
+        this.set('shownCount', Math.min(images.length, startIndex + pageSize));
       },
 
       /**
@@ -210,9 +212,9 @@ Custom property                             | Description                   | De
        *
        * @private
        */
-      _updateImagePage: function() {
+      _updatePage: function() {
         this.set('_page', 1);
-        this._updateImageList(this._page, this.pageSize);
+        this._updateImageItems(this._page, this.pageSize);
       }
     });
   })();

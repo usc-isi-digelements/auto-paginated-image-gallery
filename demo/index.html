@@ -25,13 +25,14 @@ limitations under the License.
 <body unresolved>
   <template is="dom-bind" id="demo">
     <p>Images: [[stringify(images)]]</p>
+    <p>Blur: false</p>
     <p>Image Link Property: link</p>
     <p>Image Source Property: source</p>
-    <p>Blur: false</p>
     <p>New Tab: true</p>
     <p>Page Size: 5</p>
+    <p>Shown Count: [[shownCount]]</p>
 
-    <auto-paginated-image-gallery images="[[images]]" new-tab page-size="5"></auto-paginated-image-gallery>
+    <auto-paginated-image-gallery images="[[images]]" new-tab page-size="5" shown-count="{{shownCount}}"></auto-paginated-image-gallery>
   </template>
 
   <script>

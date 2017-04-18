@@ -77,7 +77,6 @@ limitations under the License.
         expect(element.blur).to.be.false;
         expect(element.imageLinkProperty).to.equal('link');
         expect(element.imageSourceProperty).to.equal('source');
-        expect(element.loadType).to.equal('');
         expect(element.newTab).to.be.false;
         expect(element.pageSize).to.equal(25);
       });
@@ -99,6 +98,7 @@ limitations under the License.
           link: 'link5',
           source: 'source5'
         }]);
+        expect(element.shownCount).to.equal(5);
       });
 
       test('does have a paginated-image-gallery element', function() {
@@ -107,7 +107,6 @@ limitations under the License.
         expect(imageGallery.blur).to.be.false;
         expect(imageGallery.imageLinkProperty).to.equal('link');
         expect(imageGallery.imageSourceProperty).to.equal('source');
-        expect(imageGallery.loadType).to.equal('');
         expect(imageGallery.newTab).to.be.false;
         expect(imageGallery.pageSize).to.equal(25);
         expect(imageGallery.page).to.equal(1);
@@ -135,7 +134,6 @@ limitations under the License.
         element.blur = true;
         element.imageLinkProperty = 'myLink';
         element.imageSourceProperty = 'mySource';
-        element.loadType = 'Data';
         element.newTab = true;
         element.pageSize = 10;
 
@@ -144,7 +142,6 @@ limitations under the License.
         expect(imageGallery.blur).to.be.true;
         expect(imageGallery.imageLinkProperty).to.equal('myLink');
         expect(imageGallery.imageSourceProperty).to.equal('mySource');
-        expect(imageGallery.loadType).to.equal('Data');
         expect(imageGallery.newTab).to.be.true;
         expect(imageGallery.pageSize).to.equal(10);
         expect(imageGallery.totalItems).to.equal(0);
@@ -172,6 +169,7 @@ limitations under the License.
           link: 'link6',
           source: 'source6'
         }]);
+        expect(element.shownCount).to.equal(1);
       });
 
       test('image gallery data does update if pageSize is changed', function() {
@@ -184,6 +182,7 @@ limitations under the License.
           link: 'link2',
           source: 'source2'
         }]);
+        expect(element.shownCount).to.equal(2);
       });
 
       test('image gallery data does update if page is changed to 2', function() {
@@ -197,6 +196,7 @@ limitations under the License.
           link: 'link4',
           source: 'source4'
         }]);
+        expect(element.shownCount).to.equal(4);
       });
 
       test('image gallery data does update if page is changed to 3', function() {
@@ -207,6 +207,7 @@ limitations under the License.
           link: 'link5',
           source: 'source5'
         }]);
+        expect(element.shownCount).to.equal(5);
       });
     });
   </script>
