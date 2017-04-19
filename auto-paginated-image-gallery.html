@@ -56,7 +56,7 @@ Custom property                                 | Description                   
     </style>
 
     <paginated-image-gallery
-      image-items="[[_imageItems]]"
+      image-items="[[_pageImages]]"
       total-items="[[images.length]]"
       blur="[[blur]]"
       image-id-property="[[imageIdProperty]]"
@@ -66,7 +66,8 @@ Custom property                                 | Description                   
       page-size="[[pageSize]]"
       selected="[[selected]]"
       page="{{_page}}"
-      hovering="{{hovering}}">
+      hovering="{{hovering}}"
+      shown-items="{{loadedImages}}">
     </paginated-image-gallery>
   </template>
 
@@ -188,42 +189,22 @@ Custom property                                 | Description                   
          * The list of image IDs targeted by a hover event.
          *
          * @type {Array}
-         * @default []
          */
         hovering: {
           notify: true,
-          type: Array,
-          value: function() {
-            return [];
-          }
+          type: Array
         },
 
         /**
          * (Output)
          *
-         * The number of images shown on the current page and all previous pages.
-         *
-         * @type {Number}
-         * @default 0
-         */
-        shownCount: {
-          notify: true,
-          type: Number,
-          value: 0
-        },
-
-        /**
-         * The images to show on the current page in the image gallery.
+         * The list of all the images loaded in the image gallery (shown on the current and prior pages).
          *
          * @type {Array}
-         * @default []
-         * @private
          */
-        _imageItems: {
-          type: Array,
-          value: function() {
-            return [];
-          }
+        loadedImages: {
+          notify: true,
+          type: Array
         },
 
         /**
@@ -236,11 +217,25 @@ Custom property                                 | Description                   
         _page: {
           type: Number,
           value: 1
+        },
+
+        /**
+         * The images to show on the current page in the image gallery.
+         *
+         * @type {Array}
+         * @default []
+         * @private
+         */
+        _pageImages: {
+          type: Array,
+          value: function() {
+            return [];
+          }
         }
       },
 
       observers: [
-        '_updateImageItems(_page, pageSize)',
+        '_updatePageImages(_page, pageSize)',
         '_updatePage(images)'
       ],
 
@@ -251,11 +246,10 @@ Custom property                                 | Description                   
        * @param {Number} page
        * @private
        */
-      _updateImageItems: function(page, pageSize) {
+      _updatePageImages: function(page, pageSize) {
         var startIndex = pageSize * (page - 1);
         var images = this.images || [];
-        this.set('_imageItems', images.slice(startIndex, startIndex + pageSize));
-        this.set('shownCount', Math.min(images.length, startIndex + pageSize));
+        this.set('_pageImages', images.slice(startIndex, startIndex + pageSize));
       },
 
       /**
@@ -265,7 +259,7 @@ Custom property                                 | Description                   
        */
       _updatePage: function() {
         this.set('_page', 1);
-        this._updateImageItems(this._page, this.pageSize);
+        this._updatePageImages(this._page, this.pageSize);
       }
     });
   })();
