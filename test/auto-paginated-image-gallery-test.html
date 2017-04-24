@@ -84,14 +84,15 @@ limitations under the License.
       });
 
       test('default properties are set correctly', function() {
-        expect(element.blur).to.be.false;
         expect(element.hovering).to.deep.equal([]);
         expect(element.imageIdProperty).to.equal('id');
         expect(element.imageLinkProperty).to.equal('link');
         expect(element.imageSourceProperty).to.equal('source');
+        expect(element.largeImageStyleClass).to.equal('');
         expect(element.newTab).to.be.false;
         expect(element.pageSize).to.equal(25);
         expect(element.selected).to.deep.equal([]);
+        expect(element.smallImageStyleClass).to.equal('');
       });
 
       test('image gallery data is set correctly', function() {
@@ -121,15 +122,16 @@ limitations under the License.
       test('does have a paginated-image-gallery element', function() {
         var imageGallery = element.$$('paginated-image-gallery');
         expect(imageGallery).to.exist;
-        expect(imageGallery.blur).to.be.false;
         expect(imageGallery.hovering).to.deep.equal([]);
         expect(imageGallery.imageIdProperty).to.equal('id');
         expect(imageGallery.imageLinkProperty).to.equal('link');
         expect(imageGallery.imageSourceProperty).to.equal('source');
+        expect(imageGallery.largeImageStyleClass).to.equal('');
         expect(imageGallery.newTab).to.be.false;
         expect(imageGallery.pageSize).to.equal(25);
         expect(imageGallery.page).to.equal(1);
         expect(imageGallery.selected).to.deep.equal([]);
+        expect(imageGallery.smallImageStyleClass).to.equal('');
         expect(imageGallery.totalItems).to.equal(5);
         expect(imageGallery.imageItems).to.deep.equal([{
           id: 'id1',
@@ -156,24 +158,26 @@ limitations under the License.
 
       test('changing input properties does change properties of the paginated-image-gallery element', function() {
         element.images = [];
-        element.blur = true;
         element.imageIdProperty = 'myId';
         element.imageLinkProperty = 'myLink';
         element.imageSourceProperty = 'mySource';
+        element.largeImageStyleClass = 'myLargeImage';
         element.newTab = true;
         element.pageSize = 10;
         element.selected = ['id1'];
+        element.smallImageStyleClass = 'mySmallImage';
 
         var imageGallery = element.$$('paginated-image-gallery');
         expect(imageGallery).to.exist;
-        expect(imageGallery.blur).to.be.true;
         expect(imageGallery.hovering).to.deep.equal([]);
         expect(imageGallery.imageIdProperty).to.equal('myId');
         expect(imageGallery.imageLinkProperty).to.equal('myLink');
         expect(imageGallery.imageSourceProperty).to.equal('mySource');
+        expect(imageGallery.largeImageStyleClass).to.equal('myLargeImage');
         expect(imageGallery.newTab).to.be.true;
         expect(imageGallery.pageSize).to.equal(10);
         expect(imageGallery.selected).to.deep.equal(['id1']);
+        expect(imageGallery.smallImageStyleClass).to.equal('mySmallImage');
         expect(imageGallery.totalItems).to.equal(0);
         expect(imageGallery.imageItems).to.deep.equal([]);
       });
