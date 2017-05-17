@@ -17,7 +17,7 @@
   ],
   "dependencies": {
     "polymer": "Polymer/polymer#^1.7.0",
-    "paginated-image-gallery": "DigElements/paginated-image-gallery#^1.0.11"
+    "paginated-image-gallery": "DigElements/paginated-image-gallery#1.0.11"
   },
   "devDependencies": {
     "iron-component-page": "PolymerElements/iron-component-page#^1.1.7",
