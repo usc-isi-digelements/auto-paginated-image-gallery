@@ -1,26 +1,30 @@
 {
   "name": "auto-paginated-image-gallery",
   "description": "A Polymer Element showing a paginated-image-gallery element that automatically handles pagination.",
-  "version": "1.0.7",
-  "authors": ["Next Century Corporation"],
-  "license": "Apache-2.0",
+  "version": "2.0.0",
+  "authors": [
+    "Next Century Corporation"
+  ],
+  "license": "http://polymer.github.io/LICENSE.txt",
   "keywords": [
     "web-component",
     "polymer"
   ],
   "main": "auto-paginated-image-gallery.html",
-  "license": "http://polymer.github.io/LICENSE.txt",
   "homepage": "https://github.com/DigElements/auto-paginated-image-gallery/",
   "ignore": [
     "/.*",
     "/test/"
   ],
   "dependencies": {
-    "polymer": "Polymer/polymer#^1.7.0",
-    "paginated-image-gallery": "DigElements/paginated-image-gallery#1.0.11"
+    "polymer": "Polymer/polymer#^2.0.2",
+    "paginated-image-gallery": "DigElements/paginated-image-gallery#2.0.0"
   },
   "devDependencies": {
-    "iron-component-page": "PolymerElements/iron-component-page#^1.1.7",
-    "web-component-tester": "^5.0.0"
+    "iron-component-page": "PolymerElements/iron-component-page#^2.0.0",
+    "web-component-tester": "^6.0.0"
+  },
+  "resolutions": {
+    "lodash": "~4.17.2"
   }
 }

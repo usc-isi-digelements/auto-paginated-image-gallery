@@ -18,43 +18,46 @@ limitations under the License.
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, minimum-scale=1.0, initial-scale=1.0, user-scalable=yes">
-  <script src="../../webcomponentsjs/webcomponents-lite.min.js"></script>
+  <script src="../../webcomponentsjs/webcomponents-loader.js"></script>
   <link rel="import" href="../auto-paginated-image-gallery.html">
 </head>
 
 <body unresolved>
-  <template is="dom-bind" id="demo">
-    <p>Images: [[stringify(images)]]</p>
-    <p>Image Link Property: link</p>
-    <p>Image Source Property: source</p>
-    <p>New Tab: true</p>
-    <p>Page Size: 5</p>
-    <p>Shown Count: [[shownCount]]</p>
+  <dom-bind>
+    <script>
+      (function(document) {
+        var domBind = document.querySelector('dom-bind');
 
-    <auto-paginated-image-gallery images="[[images]]" new-tab page-size="5" shown-count="{{shownCount}}"></auto-paginated-image-gallery>
-  </template>
+        domBind.images = [
+          {'link':'http://nextcentury.com','source':'NextCentury.png'},
+          {'link':'http://nextcentury.com','source':'NextCentury.png'},
+          {'link':'http://nextcentury.com','source':'NextCentury.png'},
+          {'link':'http://nextcentury.com','source':'NextCentury.png'},
+          {'link':'http://nextcentury.com','source':'NextCentury.png'},
+          {'link':'http://nextcentury.com','source':'NextCentury.png'},
+          {'link':'http://nextcentury.com','source':'NextCentury.png'},
+          {'link':'http://nextcentury.com','source':'NextCentury.png'},
+          {'link':'http://nextcentury.com','source':'NextCentury.png'},
+          {'link':'http://nextcentury.com','source':'NextCentury.png'}
+        ];
 
-  <script>
-    (function(document) {
-      var demo = document.querySelector('#demo');
+        domBind.stringify = function(json) {
+          return JSON.stringify(json);
+        };
+      })(document);
+    </script>
+    <template is="dom-bind" id="demo">
+      <p>Images: [[stringify(images)]]</p>
+      <p>Image Link Property: link</p>
+      <p>Image Source Property: source</p>
+      <p>New Tab: true</p>
+      <p>Page Size: 5</p>
+      <p>Shown Count: [[shownCount]]</p>
 
-      demo.images = [
-        {'link':'http://nextcentury.com','source':'NextCentury.png'},
-        {'link':'http://nextcentury.com','source':'NextCentury.png'},
-        {'link':'http://nextcentury.com','source':'NextCentury.png'},
-        {'link':'http://nextcentury.com','source':'NextCentury.png'},
-        {'link':'http://nextcentury.com','source':'NextCentury.png'},
-        {'link':'http://nextcentury.com','source':'NextCentury.png'},
-        {'link':'http://nextcentury.com','source':'NextCentury.png'},
-        {'link':'http://nextcentury.com','source':'NextCentury.png'},
-        {'link':'http://nextcentury.com','source':'NextCentury.png'},
-        {'link':'http://nextcentury.com','source':'NextCentury.png'}
-      ];
+      <auto-paginated-image-gallery images="[[images]]" new-tab page-size="5" shown-count="{{shownCount}}"></auto-paginated-image-gallery>
+    </template>
 
-      demo.stringify = function(json) {
-        return JSON.stringify(json);
-      };
-    })(document);
-  </script>
+
+  </dom-bind>
 </body>
 </html>
