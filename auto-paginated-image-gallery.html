@@ -31,11 +31,14 @@ A Polymer Element showing a paginated-image-gallery element that automatically h
 
 `<auto-paginated-image-gallery>` provides the following custom properties and mixins for styling:
 
-Custom property                                 | Description                                  | Default
-------------------------------------------------|----------------------------------------------|--------
-`--auto-paginated-image-gallery-hovering-color` | The background color of the hovering images. | none
-`--auto-paginated-image-gallery-max-height`     | Maximum height of the gallery                | 160px
-`--auto-paginated-image-gallery-selected-color` | The background color of the selected images. | none
+Custom property                                   | Description                                  | Default
+--------------------------------------------------|----------------------------------------------|--------
+`--auto-paginated-image-gallery-hovering-color`   | The background color of the hovering images. | none
+`--auto-paginated-image-gallery-loading-spinner`  | Mixin applied to the loading-spinner.        | none
+`--auto-paginated-image-gallery-max-height`       | Maximum height of the gallery.               | 160px
+`--auto-paginated-image-gallery-scroll-threshold` | Mixin applied to the iron-scroll-threshold.  | none
+`--auto-paginated-image-gallery-selected-color`   | The background color of the selected images. | none
+`--auto-paginated-image-gallery-show-more-button` | Mixin applied to the show more button.       | none
 
 @demo demo/index.html
 -->
@@ -48,10 +51,13 @@ Custom property                                 | Description                   
       }
 
       paginated-image-gallery {
+        --paginated-image-gallery-hovering-color: var(--auto-paginated-image-gallery-hovering-color);
+        --paginated-image-gallery-loading-spinner: var(--auto-paginated-image-gallery-loading-spinner);
+        --paginated-image-gallery-scroll-threshold: var(--auto-paginated-image-gallery-scroll-threshold);
+        --paginated-image-gallery-selected-color: var(--auto-paginated-image-gallery-selected-color);
+        --paginated-image-gallery-show-more-button: var(--auto-paginated-image-gallery-show-more-button);
         /* By default, the height of 1 row of images. */
         --paginated-image-gallery-max-height: var(--auto-paginated-image-gallery-max-height, 160px);
-        --paginated-image-gallery-hovering-color: var(--auto-paginated-image-gallery-hovering-color);
-        --paginated-image-gallery-selected-color: var(--auto-paginated-image-gallery-selected-color);
       }
     </style>
 
