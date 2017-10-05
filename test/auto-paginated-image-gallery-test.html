@@ -87,12 +87,20 @@ limitations under the License.
         expect(element.hovering).to.deep.equal([]);
         expect(element.imageIdProperty).to.equal('id');
         expect(element.imageLinkProperty).to.equal('link');
+        expect(element.imageNameProperty).to.equal('name');
         expect(element.imageSourceProperty).to.equal('source');
         expect(element.largeImageStyleClass).to.equal('');
         expect(element.newTab).to.be.false;
         expect(element.pageSize).to.equal(25);
         expect(element.selected).to.deep.equal([]);
         expect(element.smallImageStyleClass).to.equal('');
+        expect(element.selectIcon).to.equal('done');
+        expect(element.showDelete).to.be.false;
+        expect(element.showLabels).to.be.false;
+        expect(element.showSelect).to.be.false;
+        expect(element.smallImageStyleClass).to.equal('');
+        expect(element.unselect).to.be.false;
+        expect(element.unselectIcon).to.equal('done');
       });
 
       test('image gallery data is set correctly', function() {
@@ -125,14 +133,21 @@ limitations under the License.
         expect(imageGallery.hovering).to.deep.equal([]);
         expect(imageGallery.imageIdProperty).to.equal('id');
         expect(imageGallery.imageLinkProperty).to.equal('link');
+        expect(imageGallery.imageNameProperty).to.equal('name');
         expect(imageGallery.imageSourceProperty).to.equal('source');
         expect(imageGallery.largeImageStyleClass).to.equal('');
         expect(imageGallery.newTab).to.be.false;
         expect(imageGallery.pageSize).to.equal(25);
         expect(imageGallery.page).to.equal(1);
         expect(imageGallery.selected).to.deep.equal([]);
+        expect(imageGallery.selectIcon).to.equal('done');
+        expect(imageGallery.showDelete).to.be.false;
+        expect(imageGallery.showLabels).to.be.false;
+        expect(imageGallery.showSelect).to.be.false;
         expect(imageGallery.smallImageStyleClass).to.equal('');
         expect(imageGallery.totalItems).to.equal(5);
+        expect(imageGallery.unselect).to.be.false;
+        expect(imageGallery.unselectIcon).to.equal('done');
         expect(imageGallery.imageItems).to.deep.equal([{
           id: 'id1',
           link: 'link1',
@@ -160,24 +175,38 @@ limitations under the License.
         element.images = [];
         element.imageIdProperty = 'myId';
         element.imageLinkProperty = 'myLink';
+        element.imageNameProperty = 'myName';
         element.imageSourceProperty = 'mySource';
         element.largeImageStyleClass = 'myLargeImage';
         element.newTab = true;
         element.pageSize = 10;
         element.selected = ['id1'];
+        element.selectIcon = 'plus';
+        element.showDelete = true;
+        element.showLabels = true;
+        element.showSelect = true;
         element.smallImageStyleClass = 'mySmallImage';
+        element.unselect = true;
+        element.unselectIcon = 'minus';
 
         var imageGallery = element.$$('paginated-image-gallery');
         expect(imageGallery).to.exist;
         expect(imageGallery.hovering).to.deep.equal([]);
         expect(imageGallery.imageIdProperty).to.equal('myId');
         expect(imageGallery.imageLinkProperty).to.equal('myLink');
+        expect(imageGallery.imageNameProperty).to.equal('myName');
         expect(imageGallery.imageSourceProperty).to.equal('mySource');
         expect(imageGallery.largeImageStyleClass).to.equal('myLargeImage');
         expect(imageGallery.newTab).to.be.true;
         expect(imageGallery.pageSize).to.equal(10);
         expect(imageGallery.selected).to.deep.equal(['id1']);
+        expect(imageGallery.selectIcon).to.equal('plus');
+        expect(imageGallery.showDelete).to.be.true;
+        expect(imageGallery.showLabels).to.be.true;
+        expect(imageGallery.showSelect).to.be.true;
         expect(imageGallery.smallImageStyleClass).to.equal('mySmallImage');
+        expect(imageGallery.unselect).to.be.true;
+        expect(imageGallery.unselectIcon).to.equal('minus');
         expect(imageGallery.totalItems).to.equal(0);
         expect(imageGallery.imageItems).to.deep.equal([]);
       });
