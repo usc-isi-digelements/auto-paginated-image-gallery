@@ -72,9 +72,9 @@ Custom property                                   | Description                 
       new-tab="[[newTab]]"
       page-size="[[pageSize]]"
       select-icon="[[selectIcon]]"
-      show-delete="[[showDelete]]"
       show-labels="[[showLabels]]"
       show-select="[[showSelect]]"
+      show-select-preceding="[[showSelectPreceding]]"
       small-image-style-class="[[smallImageStyleClass]]"
       unselect="[[unselect]]"
       unselect-icon="[[unselectIcon]]"
@@ -251,19 +251,6 @@ Custom property                                   | Description                 
         /**
          * (Optional)
          *
-         * Whether to show the "delete" buttons.
-         *
-         * @type {Boolean}
-         * @default false
-         */
-        showDelete: {
-          type: Boolean,
-          value: false
-        },
-
-        /**
-         * (Optional)
-         *
          * Whether to show the labels for the images.
          *
          * @type {Boolean}
@@ -283,6 +270,19 @@ Custom property                                   | Description                 
          * @default false
          */
         showSelect: {
+          type: Boolean,
+          value: false
+        },
+
+        /**
+         * (Optional)
+         *
+         * Whether to show the "select preceding" buttons.
+         *
+         * @type {Boolean}
+         * @default false
+         */
+        showSelectPreceding: {
           type: Boolean,
           value: false
         },
@@ -377,8 +377,11 @@ Custom property                                   | Description                 
        * @private
        */
       _updatePage: function() {
-        this.set('_page', 1);
-        this._updatePageImages(this._page, this.pageSize);
+        if(this._page === 1) {
+          this._updatePageImages(this._page, this.pageSize);
+        } else {
+          this.set('_page', 1);
+        }
       }
     });
   })();

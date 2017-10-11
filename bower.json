@@ -1,7 +1,7 @@
 {
   "name": "auto-paginated-image-gallery",
   "description": "A Polymer Element showing a paginated-image-gallery element that automatically handles pagination.",
-  "version": "2.2.0",
+  "version": "2.2.1",
   "authors": [
     "Next Century Corporation"
   ],
@@ -18,7 +18,7 @@
   ],
   "dependencies": {
     "polymer": "Polymer/polymer#^2.0.2",
-    "paginated-image-gallery": "DigElements/paginated-image-gallery#2.2.0"
+    "paginated-image-gallery": "DigElements/paginated-image-gallery#2.2.1"
   },
   "devDependencies": {
     "iron-component-page": "PolymerElements/iron-component-page#^2.0.0",

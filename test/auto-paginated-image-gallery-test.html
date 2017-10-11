@@ -95,9 +95,9 @@ limitations under the License.
         expect(element.selected).to.deep.equal([]);
         expect(element.smallImageStyleClass).to.equal('');
         expect(element.selectIcon).to.equal('done');
-        expect(element.showDelete).to.be.false;
         expect(element.showLabels).to.be.false;
         expect(element.showSelect).to.be.false;
+        expect(element.showSelectPreceding).to.be.false;
         expect(element.smallImageStyleClass).to.equal('');
         expect(element.unselect).to.be.false;
         expect(element.unselectIcon).to.equal('done');
@@ -141,9 +141,9 @@ limitations under the License.
         expect(imageGallery.page).to.equal(1);
         expect(imageGallery.selected).to.deep.equal([]);
         expect(imageGallery.selectIcon).to.equal('done');
-        expect(imageGallery.showDelete).to.be.false;
         expect(imageGallery.showLabels).to.be.false;
         expect(imageGallery.showSelect).to.be.false;
+        expect(imageGallery.showSelectPreceding).to.be.false;
         expect(imageGallery.smallImageStyleClass).to.equal('');
         expect(imageGallery.totalItems).to.equal(5);
         expect(imageGallery.unselect).to.be.false;
@@ -182,9 +182,9 @@ limitations under the License.
         element.pageSize = 10;
         element.selected = ['id1'];
         element.selectIcon = 'plus';
-        element.showDelete = true;
         element.showLabels = true;
         element.showSelect = true;
+        element.showSelectPreceding = true;
         element.smallImageStyleClass = 'mySmallImage';
         element.unselect = true;
         element.unselectIcon = 'minus';
@@ -201,9 +201,9 @@ limitations under the License.
         expect(imageGallery.pageSize).to.equal(10);
         expect(imageGallery.selected).to.deep.equal(['id1']);
         expect(imageGallery.selectIcon).to.equal('plus');
-        expect(imageGallery.showDelete).to.be.true;
         expect(imageGallery.showLabels).to.be.true;
         expect(imageGallery.showSelect).to.be.true;
+        expect(imageGallery.showSelectPreceding).to.be.true;
         expect(imageGallery.smallImageStyleClass).to.equal('mySmallImage');
         expect(imageGallery.unselect).to.be.true;
         expect(imageGallery.unselectIcon).to.equal('minus');
