@@ -72,6 +72,7 @@ Custom property                                   | Description                 
       new-tab="[[newTab]]"
       page-size="[[pageSize]]"
       select-icon="[[selectIcon]]"
+      select-word="[[selectWord]]"
       selected-property="[[selectedProperty]]"
       show-labels="[[showLabels]]"
       show-select="[[showSelect]]"
@@ -79,6 +80,7 @@ Custom property                                   | Description                 
       small-image-style-class="[[smallImageStyleClass]]"
       unselect="[[unselect]]"
       unselect-icon="[[unselectIcon]]"
+      unselect-word="[[unselectWord]]"
       page="{{_page}}"
       hovering="{{hovering}}"
       selected="{{selected}}"
@@ -263,6 +265,19 @@ Custom property                                   | Description                 
         /**
          * (Optional)
          *
+         * The word for the "select" button text if the image is unselected.
+         *
+         * @type {String}
+         * @default 'Select'
+         */
+        selectWord: {
+          type: String,
+          value: 'Select'
+        },
+
+        /**
+         * (Optional)
+         *
          * Whether to show the labels for the images.
          *
          * @type {Boolean}
@@ -336,6 +351,19 @@ Custom property                                   | Description                 
         unselectIcon: {
           type: String,
           value: 'done'
+        },
+
+        /**
+         * (Optional)
+         *
+         * The word for the "select" button text if the image is selected.
+         *
+         * @type {String}
+         * @default 'Unselect'
+         */
+        unselectWord: {
+          type: String,
+          value: 'Unselect'
         },
 
         /**

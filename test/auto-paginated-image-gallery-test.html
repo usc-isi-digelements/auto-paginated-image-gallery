@@ -95,12 +95,14 @@ limitations under the License.
         expect(element.selected).to.deep.equal([]);
         expect(element.smallImageStyleClass).to.equal('');
         expect(element.selectIcon).to.equal('done');
+        expect(element.selectWord).to.equal('Select');
         expect(element.showLabels).to.be.false;
         expect(element.showSelect).to.be.false;
         expect(element.showSelectPreceding).to.be.false;
         expect(element.smallImageStyleClass).to.equal('');
         expect(element.unselect).to.be.false;
         expect(element.unselectIcon).to.equal('done');
+        expect(element.unselectWord).to.equal('Unselect');
       });
 
       test('image gallery data is set correctly', function() {
@@ -141,6 +143,7 @@ limitations under the License.
         expect(imageGallery.page).to.equal(1);
         expect(imageGallery.selected).to.deep.equal([]);
         expect(imageGallery.selectIcon).to.equal('done');
+        expect(imageGallery.selectWord).to.equal('Select');
         expect(imageGallery.showLabels).to.be.false;
         expect(imageGallery.showSelect).to.be.false;
         expect(imageGallery.showSelectPreceding).to.be.false;
@@ -148,6 +151,7 @@ limitations under the License.
         expect(imageGallery.totalItems).to.equal(5);
         expect(imageGallery.unselect).to.be.false;
         expect(imageGallery.unselectIcon).to.equal('done');
+        expect(imageGallery.unselectWord).to.equal('Unselect');
         expect(imageGallery.imageItems).to.deep.equal([{
           id: 'id1',
           link: 'link1',
@@ -182,12 +186,14 @@ limitations under the License.
         element.pageSize = 10;
         element.selected = ['id1'];
         element.selectIcon = 'plus';
+        element.selectWord = 'Activate';
         element.showLabels = true;
         element.showSelect = true;
         element.showSelectPreceding = true;
         element.smallImageStyleClass = 'mySmallImage';
         element.unselect = true;
         element.unselectIcon = 'minus';
+        element.unselectWord = 'Deactivate';
 
         var imageGallery = element.$$('paginated-image-gallery');
         expect(imageGallery).to.exist;
@@ -201,12 +207,14 @@ limitations under the License.
         expect(imageGallery.pageSize).to.equal(10);
         expect(imageGallery.selected).to.deep.equal(['id1']);
         expect(imageGallery.selectIcon).to.equal('plus');
+        expect(imageGallery.selectWord).to.equal('Activate');
         expect(imageGallery.showLabels).to.be.true;
         expect(imageGallery.showSelect).to.be.true;
         expect(imageGallery.showSelectPreceding).to.be.true;
         expect(imageGallery.smallImageStyleClass).to.equal('mySmallImage');
         expect(imageGallery.unselect).to.be.true;
         expect(imageGallery.unselectIcon).to.equal('minus');
+        expect(imageGallery.unselectWord).to.equal('Deactivate');
         expect(imageGallery.totalItems).to.equal(0);
         expect(imageGallery.imageItems).to.deep.equal([]);
       });
