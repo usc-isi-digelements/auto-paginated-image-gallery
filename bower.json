@@ -11,14 +11,14 @@
     "polymer"
   ],
   "main": "auto-paginated-image-gallery.html",
-  "homepage": "https://github.com/DigElements/auto-paginated-image-gallery/",
+  "homepage": "https://github.com/usc-isi-digelements/auto-paginated-image-gallery/",
   "ignore": [
     "/.*",
     "/test/"
   ],
   "dependencies": {
     "polymer": "Polymer/polymer#^2.0.2",
-    "paginated-image-gallery": "DigElements/paginated-image-gallery#2.3.4"
+    "paginated-image-gallery": "usc-isi-digelements/paginated-image-gallery#2.3.4"
   },
   "devDependencies": {
     "iron-component-page": "PolymerElements/iron-component-page#^2.0.0",
